@@ -232,12 +232,12 @@ See the main [README.md](README.md) for more API examples and usage.
 ## Support
 
 For issues specific to:
-- **gpt-oss**: See the main repository's [issues](https://github.com/openai/gpt-oss/issues)
+- **gpt-oss**: See the repository's [issues page](https://github.com/shep95/gpt-oss/issues)
 - **Railway**: Check [Railway Documentation](https://docs.railway.app/) or [Railway Discord](https://discord.gg/railway)
 
 ## Additional Resources
 
 - [Railway Documentation](https://docs.railway.app/)
 - [Nixpacks Documentation](https://nixpacks.com/)
-- [gpt-oss Documentation](https://cookbook.openai.com/topic/gpt-oss)
+- [gpt-oss Repository](https://github.com/shep95/gpt-oss)
 - [Railway Templates](https://railway.app/templates)
