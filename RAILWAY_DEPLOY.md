@@ -21,14 +21,17 @@ This guide explains how to deploy the gpt-oss Responses API server to [Railway](
 
 ## Configuration
 
-The deployment is configured through two files:
+The deployment is configured through several files:
 
 - **`railway.json`**: Main deployment configuration
 - **`nixpacks.toml`**: Build environment and dependencies
+- **`runtime.txt`**: Specifies Python 3.12 runtime
+- **`Procfile`**: Alternative start command (fallback)
+- **`.env.railway.example`**: Template for environment variables (copy and customize)
 
 ### Required Environment Variables
 
-Set these environment variables in your Railway project settings:
+Set these environment variables in your Railway project settings. You can use `.env.railway.example` as a template:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
