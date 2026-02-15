@@ -40,4 +40,4 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=300s --retries=3 \
     CMD curl -f http://localhost:${PORT:-8000}/health || exit 1
 
 # Start the server
-CMD python3 -m gpt_oss.responses_api.serve --inference-backend ${INFERENCE_BACKEND:-vllm} --port ${PORT:-8000} --checkpoint ${MODEL_CHECKPOINT:-~/model}
+CMD python3 -m gpt_oss.responses_api.serve --inference-backend ${INFERENCE_BACKEND:-vllm} --port ${PORT:-8000} --checkpoint ${MODEL_CHECKPOINT:-/app/model}

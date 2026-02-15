@@ -43,7 +43,6 @@ Thumbs.db
 
 # Documentation builds
 docs/_build/
-_build/
 
 # Git
 .git/

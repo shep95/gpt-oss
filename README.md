@@ -32,6 +32,8 @@ Both models were trained using our [harmony response format][harmony] and should
 - [Harmony format & tools](#harmony-format--tools)
 - [Clients](#clients)
 - [Tools](#tools)
+- [Deployment](#deployment)
+  - [Railway](#railway)
 - [Other details](#other-details)
 - [Contributing](#contributing)
 
