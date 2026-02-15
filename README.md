@@ -32,6 +32,8 @@ Both models were trained using our [harmony response format][harmony] and should
 - [Harmony format & tools](#harmony-format--tools)
 - [Clients](#clients)
 - [Tools](#tools)
+- [Deployment](#deployment)
+  - [Railway](#railway)
 - [Other details](#other-details)
 - [Contributing](#contributing)
 
@@ -573,6 +575,67 @@ All other tensors will be in BF16. We also recommend using BF16 as the activatio
 ### Recommended Sampling Parameters
 
 We recommend sampling with `temperature=1.0` and `top_p=1.0`.
+
+## Deployment
+
+### Railway
+
+You can deploy gpt-oss on [Railway](https://railway.app) using the included configuration files. Railway provides GPU-enabled deployments suitable for running the models.
+
+#### Prerequisites
+
+- A Railway account
+- Access to GPU instances (Railway GPU plans)
+- Model weights downloaded to Railway volumes or accessible storage
+
+#### Quick Deploy
+
+1. Fork or clone this repository to your GitHub account
+2. Create a new project on Railway and connect your repository
+3. Configure the following environment variables in Railway:
+   - `PORT` - Railway will set this automatically
+   - `INFERENCE_BACKEND` - Set to `vllm` (recommended), `transformers`, or `ollama`
+   - `MODEL_CHECKPOINT` - Path to your model weights (e.g., `/app/model` if using Railway volumes)
+   - `BROWSER_BACKEND` - (Optional) Set to `exa` or `youcom` for browser tool support
+   - `YDC_API_KEY` - (Optional) Required if using YouCom browser backend
+   - `EXA_API_KEY` - (Optional) Required if using Exa browser backend
+
+4. Deploy! Railway will automatically:
+   - Build the Docker image using the included `Dockerfile`
+   - Start the Responses API server
+   - Expose your service with a public URL
+
+#### Configuration
+
+The deployment uses the included `railway.toml` for configuration and `Dockerfile` for containerization. These files are pre-configured for optimal Railway deployment:
+
+- Automatic health checks at `/health` endpoint
+- GPU-enabled CUDA base image
+- vLLM backend for efficient inference
+- Configurable restart policies
+
+#### Storage for Model Weights
+
+Model weights are typically too large to include in the Docker image. You have several options:
+
+1. **Railway Volumes**: Attach a volume to your service and download models there
+2. **External Storage**: Use S3, GCS, or similar, and download at startup
+3. **Hugging Face Hub**: Models will be cached in the container on first use
+
+Example using Hugging Face Hub (weights downloaded on first request):
+```bash
+# Set in Railway environment variables
+MODEL_CHECKPOINT=openai/gpt-oss-20b
+```
+
+#### Local Testing
+
+You can test the Docker build locally before deploying:
+
+```bash
+docker build -t gpt-oss .
+docker run -p 8000:8000 -e INFERENCE_BACKEND=vllm gpt-oss
+```
 
 ## Contributing
 

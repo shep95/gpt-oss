@@ -1,0 +1,56 @@
+# Railway ignore file - excludes files from Railway builds
+# Similar to .dockerignore but specifically for Railway uploads
+
+# Model files (too large)
+*.safetensors
+*.bin
+*.pt
+*.pth
+gpt-oss-120b/
+gpt-oss-20b/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.oss/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+tests/
+tests-data/
+.pytest_cache/
+.coverage
+
+# Documentation builds
+docs/_build/
+
+# Git
+.git/
+.gitignore
+
+# CI/CD (not needed on Railway)
+.github/
+
+# Examples and compatibility tests
+examples/
+compatibility-test/
+
+# Temporary files
+tmp/
+*.log
+*.tmp

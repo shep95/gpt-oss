@@ -1349,4 +1349,9 @@ def create_api_server(
 
             return last_event.response
 
+    @app.get("/health")
+    async def health():
+        """Health check endpoint for Railway and other deployment platforms"""
+        return {"status": "healthy"}
+
     return app
