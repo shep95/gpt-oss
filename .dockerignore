@@ -1,0 +1,65 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.oss/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Model files (too large for Docker build)
+*.safetensors
+*.bin
+*.pt
+*.pth
+gpt-oss-120b/
+gpt-oss-20b/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation builds
+docs/_build/
+_build/
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+
+# Temporary files
+tmp/
+*.log
+*.tmp
+
+# Tests and examples (if not needed in production)
+tests/
+tests-data/
+examples/
+compatibility-test/
