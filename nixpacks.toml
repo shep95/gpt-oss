@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["python312", "gcc", "stdenv.cc.cc.lib"]
+
+[phases.install]
+cmds = ["pip install -e '.[torch]'"]
+
+[start]
+cmd = "python -m gpt_oss.responses_api.serve --checkpoint $MODEL_PATH --port $PORT --inference-backend $INFERENCE_BACKEND"

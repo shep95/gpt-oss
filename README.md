@@ -202,6 +202,14 @@ lms get openai/gpt-oss-120b
 
 Check out our [awesome list](./awesome-gpt-oss.md) for a broader collection of gpt-oss resources and inference partners.
 
+#### Railway
+
+Deploy the gpt-oss Responses API server to Railway with one click:
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new)
+
+See our [Railway Deployment Guide](./RAILWAY_DEPLOY.md) for detailed instructions on deploying to Railway.
+
 ## About this repository
 
 This repository provides a collection of reference implementations:
