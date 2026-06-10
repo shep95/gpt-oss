@@ -1,6 +1,6 @@
 [build]
 builder = "NIXPACKS"
-buildCommand = "pip install ."
+buildCommand = "python -m pip install --upgrade pip && python -m pip install ."
 
 [deploy]
 startCommand = "python -m gpt_oss.responses_api.serve"
