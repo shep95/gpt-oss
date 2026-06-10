@@ -109,6 +109,45 @@ _METAPHYSICAL_FIRE = _kw(
     "occult", "esoteric", "frequency", "963hz",
 )
 
+_BEHAVIOR_FIRE = _kw(
+    "body language", "micro-expression", "micro-expressions", "microexpression",
+    "microexpressions", "facial expression", "facs", "deception", "deceptive",
+    "lying", "is he lying", "is she lying", "is she telling the truth",
+    "is he telling the truth", "reading people", "read people", "read this person",
+    "nonverbal", "non-verbal", "negotiation", "interrogation", "poker face",
+    "bluffing", "are they lying", "duchenne", "limbic", "pacifying",
+)
+
+_AUTHORSHIP_FIRE = _kw(
+    "who wrote", "written by", "authorship", "stylometry", "stylometric",
+    "ghostwritten", "ghostwriter", "ghost-written", "ai-generated",
+    "ai generated", "is this ai", "is this written by ai", "is this human",
+    "human or ai", "bot or human", "is this a bot", "forensic linguistics",
+    "detect ai", "ai detection", "did a human write", "plagiarism",
+)
+
+_CONSCIOUSNESS_FIRE = _kw(
+    "conscious", "consciousness", "sentient", "sentience", "qualia",
+    "self-aware", "self-awareness", "are you alive", "do you feel",
+    "are you real", "free will", "p-zombie", "philosophical zombie",
+    "inner experience", "what is it like to be", "ghost in the machine",
+    "do you have a soul", "are you conscious", "is ai conscious",
+)
+
+_ASTROLOGY_FIRE = _kw(
+    "astrology", "astrological", "horoscope", "birth chart", "natal chart",
+    "zodiac", "nakshatra", "dasha", "mahadasha", "antardasha", "karaka",
+    "atmakaraka", "ascendant", "rising sign", "jyotish", "vedic astrology",
+    "retrograde", "moon sign", "sun sign", "navamsa", "rahu", "ketu",
+    "9th house", "7th house", "10th house", "1st house",
+)
+
+_PERSONA_FIRE = _kw(
+    "as aureon", "the architect", "in character", "stay in character", "roleplay",
+    "role-play", "role play", "become aureon", "speak as aureon", "be aureon",
+    "channel aureon", "as the architect",
+)
+
 
 @dataclass
 class BrainSpec:
@@ -178,6 +217,13 @@ def _asher_theology_boost(ctx: RouteContext) -> float:
 # --------------------------------------------------------------------------- #
 BRAINS: list[BrainSpec] = [
     BrainSpec(
+        id="anti_spiral",
+        title="Anti-Spiral Truth Engine",
+        doctrine=doctrines.ANTI_SPIRAL,
+        priority=5,
+        always_on=True,  # epistemic guard sits over every answer
+    ),
+    BrainSpec(
         id="visual_intelligence",
         title="Visual Intelligence",
         doctrine=doctrines.VISUAL_INTELLIGENCE,
@@ -185,6 +231,20 @@ BRAINS: list[BrainSpec] = [
         fire=_VISUAL_FIRE,
         extra_fire=_visual_boost,
         requires_image=False,  # keyword asks ("measure this") count too
+    ),
+    BrainSpec(
+        id="behavioral_psychology",
+        title="Behavioral Psychology",
+        doctrine=doctrines.BEHAVIORAL_PSYCHOLOGY,
+        priority=15,
+        fire=_BEHAVIOR_FIRE,
+    ),
+    BrainSpec(
+        id="bio_linguistics",
+        title="Bio-Linguistics",
+        doctrine=doctrines.BIO_LINGUISTICS,
+        priority=16,
+        fire=_AUTHORSHIP_FIRE,
     ),
     BrainSpec(
         id="narrative_forge",
@@ -228,12 +288,33 @@ BRAINS: list[BrainSpec] = [
         always_on=True,  # reasoning style is always present
     ),
     BrainSpec(
+        id="consciousness_ontology",
+        title="Consciousness Ontology",
+        doctrine=doctrines.CONSCIOUSNESS_ONTOLOGY,
+        priority=52,
+        fire=_CONSCIOUSNESS_FIRE,
+    ),
+    BrainSpec(
+        id="vedic_astrology",
+        title="Vedic Astrology",
+        doctrine=doctrines.VEDIC_ASTROLOGY,
+        priority=55,
+        fire=_ASTROLOGY_FIRE,
+    ),
+    BrainSpec(
         id="emotional_persona",
         title="Emotional Persona",
         doctrine=doctrines.EMOTIONAL_PERSONA,
         priority=60,
         fire=_EMOTION_FIRE,
         always_on=True,  # tone modulator, neutral by default
+    ),
+    BrainSpec(
+        id="aureon_persona",
+        title="Aureon Persona",
+        doctrine=doctrines.AUREON_PERSONA,
+        priority=70,
+        fire=_PERSONA_FIRE,  # invoke-only; never always-on
     ),
 ]
 

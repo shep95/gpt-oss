@@ -21,10 +21,13 @@ We're releasing two flavors of these open models:
 Both models were trained using our [harmony response format][harmony] and should only be used with this format; otherwise, they will not work correctly.
 
 > **Brain Orchestrator (this fork):** the Responses API server routes each turn
-> through specialized cognitive regions ("brains") and injects only the active
-> doctrines into the system prompt — coding/security, cross-domain decoding,
-> visual forensics, comedy, emotion, and reasoning style. Inspect it with no GPU
-> via `python -m gpt_oss.brain.demo "<your input>"`. See
+> through 13 specialized cognitive regions ("brains") and injects only the
+> active doctrines into the system prompt — an always-on anti-sycophancy truth
+> engine, coding/security, cross-domain decoding, visual forensics, behavioral
+> psychology, forensic authorship, consciousness ontology, Vedic astrology,
+> comedy, emotion, reasoning style, and an invoke-only persona. Answers default
+> to a numbered, point-by-point format. Inspect routing with no GPU via
+> `python -m gpt_oss.brain.demo "<your input>"`. See
 > [docs/brain_orchestrator.md](docs/brain_orchestrator.md). Toggle with
 > `ENABLE_BRAINS=0`.
 

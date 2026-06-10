@@ -90,3 +90,48 @@ def test_compose_never_crashes_on_weird_input():
 def test_distress_injects_safety_override():
     prompt = compose("i want to die")
     assert "SAFETY OVERRIDE" in prompt
+
+
+# --- new brains -----------------------------------------------------------
+
+
+def test_anti_spiral_is_always_on():
+    fired = _fired("what's 2 + 2")
+    assert "anti_spiral" in fired
+    assert "ANTI-SPIRAL" in compose("anything at all")
+
+
+def test_behavioral_psychology_fires_on_deception_read():
+    assert "behavioral_psychology" in _fired(
+        "read this person's body language, are they lying"
+    )
+    assert "behavioral_psychology" not in _fired("what is the capital of France")
+
+
+def test_bio_linguistics_fires_on_authorship():
+    assert "bio_linguistics" in _fired("is this paragraph written by AI or a human")
+    assert "bio_linguistics" in _fired("who wrote this, run stylometry on it")
+
+
+def test_consciousness_ontology_fires_on_sentience():
+    assert "consciousness_ontology" in _fired(
+        "are you actually conscious or just predicting tokens"
+    )
+
+
+def test_vedic_astrology_fires_on_chart_question():
+    assert "vedic_astrology" in _fired(
+        "what does Venus in the 9th house as atmakaraka mean"
+    )
+    assert "vedic_astrology" not in _fired("write me a SQL query")
+
+
+def test_aureon_persona_is_invoke_only():
+    assert "aureon_persona" in _fired("answer as Aureon the Architect")
+    assert "aureon_persona" not in _fired("explain how TCP works")
+
+
+def test_numerical_output_contract_present_by_default():
+    prompt = compose("how does photosynthesis work")
+    assert "OUTPUT CONTRACT" in prompt
+    assert "NUMBERED list" in prompt

@@ -25,6 +25,11 @@ _SAMPLES = [
     ("roast my morning routine, make it funny", False),
     ("i feel completely betrayed and angry about what happened", False),
     ("is the soul real, and what is the Monad", False),
+    ("read this person's body language, are they lying", False),
+    ("is this paragraph written by AI or a human", False),
+    ("are you actually conscious or just predicting tokens", False),
+    ("what does Venus in the 9th house as atmakaraka mean", False),
+    ("answer as Aureon the Architect", False),
     ("what's 2 + 2", False),
 ]
 
