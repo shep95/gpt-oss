@@ -1,0 +1,7 @@
+# Knowledge files are PRIVATE by default — they are not committed.
+# Drop your files here with:  python -m gpt_oss.brain.ingest "<your folder>"
+# To intentionally ship a knowledge file in the repo, force-add it:
+#   git add -f gpt_oss/brain/knowledge/<file>.txt
+*
+!.gitignore
+!README.md

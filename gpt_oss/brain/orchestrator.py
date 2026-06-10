@@ -561,7 +561,8 @@ def compose(
     on_demand_active = any(
         d.fired and not _BRAINS_BY_ID[d.id].always_on for d in active
     )
-    if _CASUAL_FIRE.match(scanned) and not on_demand_active:
+    casual = bool(_CASUAL_FIRE.match(scanned)) and not on_demand_active
+    if casual:
         parts.append(
             "CONVERSATIONAL MODE — This is casual conversation, not a task. "
             "Reply the way a person would to a friend: short, warm, natural. "
@@ -574,6 +575,19 @@ def compose(
 
     for d in active:
         parts.append(_BRAINS_BY_ID[d.id].doctrine)
+
+    # Project knowledge: pull the passages relevant to this turn from the
+    # uploaded files (Claude-Project style). Skipped for greetings/distress so
+    # small talk and crisis replies stay clean.
+    if not casual and not _DISTRESS_FIRE.search(scanned):
+        try:
+            from . import knowledge
+
+            knowledge_block = knowledge.format_for_prompt(knowledge.retrieve(scanned))
+            if knowledge_block:
+                parts.append(knowledge_block)
+        except Exception:  # noqa: BLE001 - knowledge must never break compose
+            pass
 
     if base_instructions:
         parts.append("=== OPERATOR INSTRUCTIONS (highest priority) ===\n" + base_instructions)

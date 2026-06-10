@@ -16,6 +16,7 @@ from .orchestrator import (
     explain,
     route,
 )
+from .knowledge import knowledge_enabled, retrieve
 
 __all__ = [
     "BRAINS",
@@ -24,4 +25,6 @@ __all__ = [
     "compose",
     "explain",
     "route",
+    "retrieve",
+    "knowledge_enabled",
 ]

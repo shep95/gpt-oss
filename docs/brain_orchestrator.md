@@ -59,6 +59,29 @@ attack/manipulation *knowledge* but are hard-bound to a defensive purpose — th
 explain mechanisms so you can defend against them, and refuse to produce
 weaponized exploit code or to manipulate the user.
 
+## Two layers: brains (how it thinks) + knowledge (what it knows)
+
+The brains are the *personality* — distilled doctrines that shape voice and
+reasoning. The **knowledge base** is the *content* — your actual uploaded files,
+retrieved on demand, exactly like a Claude Project.
+
+```bash
+python -m gpt_oss.brain.ingest "C:/path/to/your/files"   # upload (.txt/.md/.pdf)
+python -m gpt_oss.brain.ingest --list                    # see what's indexed
+```
+
+At answer time, the relevant passages are retrieved (pure-Python BM25, no GPU,
+no extra deps) and handed to the model as a `PROJECT KNOWLEDGE` block with the
+instruction to weave the facts into a natural reply — never dump them. Retrieval
+is skipped for greetings and distress. Knowledge files are **git-ignored by
+default** so personal content is not pushed to a public repo; see
+[gpt_oss/brain/knowledge/README.md](../gpt_oss/brain/knowledge/README.md).
+
+| Env var | Default | Effect |
+| --- | --- | --- |
+| `BRAIN_KNOWLEDGE_DIR` | `gpt_oss/brain/knowledge/` | where knowledge is read from |
+| `ENABLE_KNOWLEDGE` | `1` | set `0` to disable retrieval |
+
 ## How routing works
 
 1. The current user turn is extracted from the request.
