@@ -1,0 +1,13 @@
+.git
+**/__pycache__
+*.pyc
+*.egg-info
+build/
+_build/**/__pycache__
+.venv
+venv
+*.safetensors
+*.bin
+model/
+~/model
+.DS_Store
